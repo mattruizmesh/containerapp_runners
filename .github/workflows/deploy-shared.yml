@@ -2,17 +2,6 @@ name: Deploy Shared Resources
 
 on:
   workflow_dispatch:
-    # Manual trigger with optional inputs
-    inputs:
-      environment:
-        description: 'Environment to deploy to'
-        required: true
-        default: 'development'
-        type: choice
-        options:
-          - development
-          - staging
-          - production
 
 env:
   # Place for environment variables
@@ -40,7 +29,7 @@ jobs:
           scope: 'subscription'
           subscriptionId: ${{ vars.AZURE_SUBSCRIPTION_ID }}
           template: 'env/shared/main.bicep'
-          region: ${{ vars.AZURE_LOCATION }}
+          region: ${{ vars.LOCATION }}
           parameters: >
             resourceGroup=${{ vars.RESOURCE_GROUP }}
             location=${{ vars.LOCATION }}
