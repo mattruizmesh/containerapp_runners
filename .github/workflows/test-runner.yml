@@ -5,7 +5,7 @@ on:
     
 jobs:
   test:
-    runs-on: careporunner
+    runs-on: self-hosted
 
     steps:
       - run: |
