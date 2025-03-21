@@ -1,7 +1,7 @@
 targetScope = 'subscription'
 
 @description('Name of the resource group')
-param rgName string
+param resourceGroup string
 
 @description('Location of the resource group')
 param location string
@@ -10,7 +10,7 @@ param location string
 param project string
 
 resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: rgName
+  name: resourceGroup
   location: location
 }
 
