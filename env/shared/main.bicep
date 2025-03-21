@@ -21,9 +21,9 @@ module shrResources './shrResources.bicep' = {
     location: location
     project: project
     tags: {
-      'environment': 'shr'
-      'project': project
-      'owner': 'Matt Ruiz'
+      environment: 'shr'
+      project: project
+      owner: 'Matt Ruiz'
     }
   }
 }
