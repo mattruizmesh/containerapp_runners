@@ -33,5 +33,5 @@ jobs:
           parameters: >
             resourceGroup=${{ vars.RESOURCE_GROUP }}
             location=${{ vars.LOCATION }}
-            project='reporunners'
+            project=reporunners
           deploymentName: 'deploy-aca-runner-shared-infra'
