@@ -96,11 +96,11 @@ resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
             }
             {
               name: 'GH_URL'
-              value: 'https://github.com/${repoOwner}}/${repoName}'
+              value: 'https://github.com/mattruizmesh/containerapp_runners'
             }
             {
               name: 'REGISTRATION_TOKEN_API_URL'
-              value: 'https://api.github.com/repos/${repoOwner}/${repoName}/actions/runners/registration-token'
+              value: 'https://api.github.com/repos/mattruizmesh/containerapp_runners/actions/runners/registration-token'
             }
             {
               // Remove this once https://github.com/microsoft/azure-container-apps/issues/502 is fixed
