@@ -37,11 +37,11 @@ jobs:
       - name: Deploy Shared Resources
         uses: azure/arm-deploy@v2
         with:
-          scope: 'subscripton'
+          scope: 'subscription'
           subscriptionId: ${{ vars.AZURE_SUBSCRIPTION_ID }}
           template: 'env/shared/main.bicep'
           region: ${{ vars.AZURE_LOCATION }}
           parameters: >
             resourceGroup=${{ vars.RESOURCE_GROUP }}
             location=${{ vars.LOCATION }}
-          deploymenttName: 'deploy-aca-runner-shared-infra'
+          deploymentName: 'deploy-aca-runner-shared-infra'
