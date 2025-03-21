@@ -68,9 +68,11 @@ resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
                 }
               ]
               metadata: {
-                githubAPIURL: 'https://api.github.com'
+                githubApiURL: 'https://api.github.com'
                 owner: repoOwner
                 repos: repoName
+                runnerScope: 'repo'
+                labels: 'careporunner'
                 targetWorkflowQueueLength: 1
               }
             }
