@@ -1,0 +1,35 @@
+name: Deploy Shared Resources
+
+on:
+  workflow_dispatch:
+    # Manual trigger with optional inputs
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+
+env:
+  # Place for environment variables
+  RESOURCE_GROUP: 'container-apps-rg'
+  LOCATION: 'eastus'
+  # Add more environment variables as needed
+
+jobs:
+  deploy:
+    name: Deploy Resources
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Azure Login
+        uses: azure/login@v1.6.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
