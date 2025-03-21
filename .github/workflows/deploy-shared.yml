@@ -7,6 +7,7 @@ env:
   # Place for environment variables
   RESOURCE_GROUP: 'container-apps-rg'
   LOCATION: 'eastus'
+  GITHUB_TOKEN: ${{ secrets.GH_PAT }}
   # Add more environment variables as needed
 
 jobs:
@@ -43,8 +44,6 @@ jobs:
           gh variable set ACA_MI_NAME --body ${{ steps.bicep-deploy.outputs.acaManagedIDName }}
           gh variable set ACR_NAME --body ${{ steps.bicep-deploy.outputs.acrName }}
           gh variable set ACA_ENV_NAME --body ${{ steps.bicep-deploy.outputs.acaEnvName }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       - run : |
           az acr config authentication-as-arm show --registry ${{ steps.bicep-deploy.outputs.acrName }}
