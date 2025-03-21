@@ -44,3 +44,4 @@ jobs:
           parameters: >
             resourceGroup=${{ vars.RESOURCE_GROUP }}
             location=${{ vars.LOCATION }}
+          deploymenttName: 'deploy-aca-runner-shared-infra'
