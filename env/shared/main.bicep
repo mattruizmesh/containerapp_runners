@@ -31,3 +31,4 @@ module shrResources './shrResources.bicep' = {
 output acrName string = shrResources.outputs.acrName
 output acaManagedIDName string = shrResources.outputs.acaManagedIDName
 output acaEnvName string = shrResources.outputs.acaEnvName
+output project string = project
