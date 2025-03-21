@@ -82,7 +82,7 @@ resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
       containers: [
         {
           name: 'github-runner'
-          image: '${acr.properties.loginServer}/${project}/${image}'
+          image: '${acr.properties.loginServer}/${image}'
           resources: {
             cpu: json(containerCpu)
             memory: containerMemory
