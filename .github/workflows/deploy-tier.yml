@@ -33,7 +33,7 @@ jobs:
             project=${{ vars.PROJECT }} 
             acrName=${{ vars.ACR_NAME }} 
             acaEnvName=${{ vars.ACA_ENV_NAME }} 
-            acaMsiName=${{ vars.ACA_MSI_NAME }}
+            acaMsiName=${{ vars.ACA_MI_NAME }}
             ghpat=${{ secrets.GH_PAT }}
             imageTag=${{ vars.PROJECT }}:latest
             repoName=${{ github.repository }}
