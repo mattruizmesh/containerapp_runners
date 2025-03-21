@@ -1,0 +1,41 @@
+name: Deploy tier Resources
+
+on:
+  workflow_dispatch:
+
+env:
+  # Place for environment variables
+  LOCATION: 'eastus'
+  GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+  # Add more environment variables as needed
+
+jobs:
+  deploy:
+    name: Deploy Resources
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy self-hosted runners
+        uses: azure/arm-deploy@v1
+        with:
+          scope: resourcegroup
+          resourceGroupName: ${{ vars.RESOURCE_GROUP }}
+          template: ./env/tier/main.bicep
+          parameters: >
+            project=${{ vars.PROJECT }} 
+            acrName=${{ vars.ACR_NAME }} 
+            acaEnvName=${{ vars.ACA_ENV_NAME }} 
+            acaMsiName=${{ vars.ACA_MSI_NAME }}
+            ghpat=${{ secrets.GH_PAT }}
+            imageTag=${{ vars.PROJECT }}:latest
+            repoName=${{ github.repository }}
+            repoOwner=${{ github.repository_owner }}
+          deploymentName: deploy-aca-gh-runners
