@@ -25,6 +25,7 @@ jobs:
 
       - name: Deploy Shared Resources
         uses: azure/arm-deploy@v2
+        id: bicep-deploy
         with:
           scope: 'subscription'
           subscriptionId: ${{ vars.AZURE_SUBSCRIPTION_ID }}
@@ -35,3 +36,13 @@ jobs:
             location=${{ vars.LOCATION }}
             project=reporunners
           deploymentName: 'deploy-aca-runner-shared-infra'
+
+      - name: Update GitHub variables
+        run: |
+          gh variable set PROJECT --body ${{ steps.bicep-deploy.outputs.project }}
+          gh variable set ACR_NAME --body ${{ steps.bicep-deploy.outputs.acrName }}
+          gh variable set ACA_ENV_NAME --body ${{ steps.bicep-deploy.outputs.acaEnvName }}
+        
+      - run : |
+          az acr config authentication-as-arm show --registry ${{ steps.bicep-deploy.outputs.acrName }}
+          az acr build -r ${{ steps.bicep-deploy.outputs.acrName }} -g ${{ vars.RESOURCE_GROUP }} -f src/Dockerfile.from-ghcr -t ${{ steps.bicep-deploy.outputs.project }}:latest src
