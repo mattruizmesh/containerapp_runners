@@ -36,6 +36,4 @@ jobs:
             acaMsiName=${{ vars.ACA_MI_NAME }}
             ghpat=${{ secrets.GH_PAT }}
             imageTag=${{ vars.PROJECT }}:latest
-            repoName=${{ github.repository }}
-            repoOwner=${{ github.repository_owner }}
           deploymentName: deploy-aca-gh-runners

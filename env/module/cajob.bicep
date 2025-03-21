@@ -1,8 +1,8 @@
 param location string
 param project string
 param ghpat string
-param repoOwner string
-param repoName string
+// param repoOwner string
+// param repoName string
 param tags {
   *: string
 }

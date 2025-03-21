@@ -10,8 +10,8 @@ param acaEnvName string
 param acaMsiName string
 param imageTag string
 param ghpat string
-param repoName string
-param repoOwner string
+// param repoName string
+// param repoOwner string
 
 module acj '../module/cajob.bicep' = {
   name: 'acj'
@@ -19,8 +19,8 @@ module acj '../module/cajob.bicep' = {
     location: location
     project: project
     ghpat: ghpat
-    repoName: repoName
-    repoOwner: repoOwner
+    // repoName: repoName
+    // repoOwner: repoOwner
     acrName: acrName
     acaEnvironmentName: acaEnvName
     acaMsiName: acaMsiName
