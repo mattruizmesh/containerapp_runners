@@ -33,3 +33,14 @@ jobs:
         uses: azure/login@v1.6.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Shared Resources
+        uses: azure/arm-deploy@v2
+        with:
+          scope: 'subscripton'
+          subscriptionId: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+          template: 'env/shared/main.bicep'
+          region: ${{ vars.AZURE_LOCATION }}
+          parameters: >
+            resourceGroup=${{ vars.RESOURCE_GROUP }}
+            location=${{ vars.LOCATION }}
